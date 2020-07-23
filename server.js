@@ -60,16 +60,22 @@ app.post("/api/notes", function(req, res) {
   
   });
 
-app.delete("./db/db.json", function(req, res){
+
+//in progress
+
+app.delete("/api/notes/:id", function(req, res){
+
     fs.readFile("./db/db.json", "utf8",function(err, data){
-        if(err){
-            return console.log(err);
-        }
+
         if(id="matching id"){
             // newNote.splice()
         }
+
     });
+
 });
+//in progress end
+
 
 app.get("*", function(req, res){
     res.sendFile(path.join(__dirname, "/public/index.html"))
