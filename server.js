@@ -66,14 +66,14 @@ app.post("/api/notes", function(req, res) {
 app.delete("/api/notes/:id", function(req, res){
 
     fs.readFile("./db/db.json", "utf8",function(err, data){
-
-        if(id="matching id"){
-            // newNote.splice()
-        }
+        const id = req.params.id;
+        const notes = req.body;
+        notes.deleteNotes(id)
+        .then(() => res.json({success: true}));
 
     });
-
 });
+
 //in progress end
 
 
