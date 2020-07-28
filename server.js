@@ -64,14 +64,14 @@ app.post("/api/notes", function(req, res) {
      });
 
 
-//in progress
+//IN PROGRESS START
 
-function checkid(){
-    if(id === uniqueId){
-        readFromDb.splice(uniqueId, 1);
-        return readFromDb;
-    }
-}
+// function checkid(){
+//     if(id === uniqueId){
+//         readFromDb.splice(uniqueId, 1);
+//         return readFromDb;
+//     }
+// }
 
 // ***Please help look over where the app.delete went wrong i couldn't figure it out... 
 
@@ -90,6 +90,7 @@ function checkid(){
 
 // });
 
+//IN PROGRESS END
 
 
 
