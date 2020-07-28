@@ -4,6 +4,7 @@ var path = require("path");
 var fs= require("fs");
 const { json } = require("body-parser");
 
+
 //Sets up express app
 var app = express();
 var PORT = 3000;
@@ -24,15 +25,18 @@ app.get("/notes", function(req, res){
 // Displays all notes
 app.get("/api/notes", function(req, res) {
     console.log("inside api/notes");
-    fs.readFile("./db/db.json", "utf8",function(err,data){
-        if(err){
-            return console.log(err);
-        }
-        var myData= JSON.parse(data)
-        console.log(myData);
-       return res.json(myData)
-    });
+
+        fs.readFile("./db/db.json", "utf8",function(err,data){
+            if(err){
+                return console.log(err);
+            }
+            var myData= JSON.parse(data)
+            console.log(myData);
+           return res.json(myData)
+        });
   });
+
+// Make get notes function...
 
 
 // Create New Notes - takes in JSON input
@@ -41,11 +45,11 @@ app.post("/api/notes", function(req, res) {
     // This works because of our body parsing middleware
     var newNote = req.body;
 
-
-    newNote.id=1
-
-    console.log(newNote);
-
+    //make id unique for each note here!! 
+    //Could not figure out how to make unique id...Please Advise
+    newNote.id;
+    
+    
     fs.readFile("./db/db.json", "utf8",function(err,data){
         if(err){
             return console.log(err);
@@ -55,26 +59,40 @@ app.post("/api/notes", function(req, res) {
         fs.writeFile("./db/db.json", JSON.stringify(readFromDb),function(error){
             if (error) throw error
             res.json(true)
+            });
         });
-    });
-  
-  });
+     });
 
 
 //in progress
 
-app.delete("/api/notes/:id", function(req, res){
+function checkid(){
+    if(id === uniqueId){
+        readFromDb.splice(uniqueId, 1);
+        return readFromDb;
+    }
+}
 
-    fs.readFile("./db/db.json", "utf8",function(err, data){
-        const id = req.params.id;
-        const notes = req.body;
-        notes.deleteNotes(id)
-        .then(() => res.json({success: true}));
+// ***Please help look over where the app.delete went wrong i couldn't figure it out... 
 
-    });
-});
+// app.delete("/api/notes/:id", function(req, res){
 
-//in progress end
+//         fs.readFile("./db/db.json", "utf8",function(err, data){
+//             readFromDb.filter(checkid);
+//              readFromDb.deleteNotes(req.params.id)
+//              .then(() => res.json({success: true}));
+//         });
+
+//         fs.writeFile("./db/db.json", JSON.stringify(readFromDb),function(error){
+//             if (error) throw error
+//             res.json(true)
+//             });
+
+// });
+
+
+
+
 
 
 app.get("*", function(req, res){
@@ -84,4 +102,5 @@ app.get("*", function(req, res){
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-  
+
+
