@@ -7,7 +7,7 @@ const { json } = require("body-parser");
 
 //Sets up express app
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3001;
 
 //Sets up express app to handle data parsing
 app.use(express.urlencoded({ extended: true}));
