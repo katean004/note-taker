@@ -1,5 +1,4 @@
 # Note-Taker
-- Heroku link: 
 ![](https://i.gyazo.com/6f757c02c185e1eeadf758344b7a6285.png)
 
 ## Table of Contents
