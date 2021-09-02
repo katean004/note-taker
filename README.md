@@ -1,6 +1,4 @@
 # Note-Taker
-![](https://i.gyazo.com/c744156d0d404db5a7d9306edb4970b7.png)
-
 - Heroku link: 
 ![](https://i.gyazo.com/6f757c02c185e1eeadf758344b7a6285.png)
 
